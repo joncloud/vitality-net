@@ -19,16 +19,16 @@
   <PropertyGroup>
     <Description>Provides component status evaluation to integrate with monitoring services</Description>
     <Copyright>Copyright (c) 2017 joncloud (jdberube@gmail.com)</Copyright>
-    <AssemblyTitle>Life</AssemblyTitle>
+    <AssemblyTitle>Lyfe</AssemblyTitle>
     <Authors>joncloud</Authors>
-    <AssemblyName>Life</AssemblyName>
-    <PackageId>Life</PackageId>
+    <AssemblyName>Lyfe</AssemblyName>
+    <PackageId>Lyfe</PackageId>
     <PackageTags>asp.net core;mvc;life;status;health;check;component;availability;monitor</PackageTags>
-    <PackageReleaseNotes>https://github.com/joncloud/life-net/releases</PackageReleaseNotes>
-    <PackageIconUrl>https://raw.githubusercontent.com/joncloud/life-net/master/nuget.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/joncloud/life-net</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/joncloud/life-net/master/LICENSE.md</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/joncloud/lyfe-net/releases</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/joncloud/lyfe-net/master/nuget.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/joncloud/lyfe-net</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/joncloud/lyfe-net/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/joncloud/life-net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/joncloud/lyfe-net</RepositoryUrl>
   </PropertyGroup>
 </Project>

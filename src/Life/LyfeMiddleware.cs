@@ -6,14 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 
-namespace Life
+namespace Lyfe
 {
-    class LifeMiddleware
+    class LyfeMiddleware
     {
-        readonly LifeOptions _options;
+        readonly LyfeOptions _options;
         readonly IStatusService _statusService;
         readonly RequestDelegate _next;
-        public LifeMiddleware(IOptions<LifeOptions> options, IStatusService statusService, RequestDelegate next)
+        public LyfeMiddleware(IOptions<LyfeOptions> options, IStatusService statusService, RequestDelegate next)
         {
             _options = options.Value;
             _statusService = statusService;

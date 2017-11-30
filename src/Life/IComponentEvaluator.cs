@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Life
+namespace Lyfe
 {
     public interface IComponentEvaluator
     {
