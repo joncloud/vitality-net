@@ -1,9 +1,9 @@
-# Life.NET
-[![Travis](https://img.shields.io/travis/joncloud/life-net.svg)](https://travis-ci.org/joncloud/life-net/)
-[![NuGet](https://img.shields.io/nuget/v/Life.svg)](https://www.nuget.org/packages/Life/)
+# Vitality.NET
+[![Travis](https://img.shields.io/travis/joncloud/vitality-net.svg)](https://travis-ci.org/joncloud/vitality-net/)
+[![NuGet](https://img.shields.io/nuget/v/Vitality.svg)](https://www.nuget.org/packages/Vitality/)
 
 ## Description
-Life.NET provides component status evaluation to integrate with monitoring services.
+Vitality.NET provides component status evaluation to integrate with monitoring services.
 
 ## Licensing
 Released under the MIT License.  See the [LICENSE][] file for further details.
@@ -14,14 +14,14 @@ Released under the MIT License.  See the [LICENSE][] file for further details.
 In the Package Manager Console execute
 
 ```powershell
-Install-Package Life
+Install-Package Vitality
 ```
 
 Or update `*.csproj` to include a dependency on
 
 ```xml
 <ItemGroup>
-  <PackageReference Include="Life" Version="0.1.0-*" />
+  <PackageReference Include="Vitality" Version="0.1.0-*" />
 </ItemGroup>
 ```
 
@@ -30,7 +30,7 @@ Sample authorization for details:
 ```csharp
 class Startup {
   public void ConfigureServices(IServiceCollection services) => 
-    services.AddLife(options => options.AuthorizeDetails = ctx => ctx.User.IsInRole("Admin"));
+    services.AddVitality(options => options.AuthorizeDetails = ctx => ctx.User.IsInRole("Admin"));
 }
 ```
 
@@ -40,14 +40,14 @@ class Startup {
   // ...
   
   public void ConfigureServices(IServiceCollection services) => 
-    services.AddLife(options => options.AddDbConnectionEvaluator("SqliteDatabase", () => new SqliteConnection(), "Data Source=:memory:;"));
+    services.AddVitality(options => options.AddDbConnectionEvaluator("SqliteDatabase", () => new SqliteConnection(), "Data Source=:memory:;"));
     
   public void Configure(IApplicationBuilder app, IHostingEnvironment env) =>
-    app.UseLife().UseMvc();
+    app.UseVitality().UseMvc();
 }
 ```
 
-Sample output for `/life` results in
+Sample output for `/vitality` results in
 ```json
 {
   "sqliteDatabase": "Up"
@@ -56,4 +56,4 @@ Sample output for `/life` results in
 
 For additional usage see [Tests][].
 
-[Tests]: tests/Life.Tests
+[Tests]: tests/Vitality.Tests
