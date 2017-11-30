@@ -3,7 +3,7 @@
 if [ -z $NUGET_API_KEY ]; then
   echo "NuGet API Key not set"
 else
-  NUPKG_PATH=$(ls src/Life/bin/Release/*.nupkg)
+  NUPKG_PATH=$(ls src/Vitality/bin/Release/*.nupkg)
   if [ -z $NUPKG_PATH ]; then
     echo "Missing NuPkg"
     exit 1

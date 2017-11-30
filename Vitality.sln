@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{082772AC-521
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DE159599-8835-4E56-B67A-634E12EF01A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Life", "src\Life\Life.csproj", "{61EA2EFE-AD72-4436-BF2D-C18058211D60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vitality", "src\Vitality\Vitality.csproj", "{61EA2EFE-AD72-4436-BF2D-C18058211D60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Life.Tests", "tests\Life.Tests\Life.Tests.csproj", "{C62B50D1-BDDF-4C58-A956-63EA182FE8FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vitality.Tests", "tests\Vitality.Tests\Vitality.Tests.csproj", "{C62B50D1-BDDF-4C58-A956-63EA182FE8FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

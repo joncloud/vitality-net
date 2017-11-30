@@ -6,14 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 
-namespace Life
+namespace Vitality
 {
-    class LifeMiddleware
+    class VitalityMiddleware
     {
-        readonly LifeOptions _options;
+        readonly VitalityOptions _options;
         readonly IStatusService _statusService;
         readonly RequestDelegate _next;
-        public LifeMiddleware(IOptions<LifeOptions> options, IStatusService statusService, RequestDelegate next)
+        public VitalityMiddleware(IOptions<VitalityOptions> options, IStatusService statusService, RequestDelegate next)
         {
             _options = options.Value;
             _statusService = statusService;

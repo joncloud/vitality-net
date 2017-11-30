@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Life
+namespace Vitality
 {
     class StatusService : IStatusService
     {

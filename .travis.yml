@@ -11,6 +11,6 @@ install:
 script:
  - dotnet restore
  - dotnet build --configuration=Release
- - dotnet test --configuration=Release ./tests/Life.Tests/
- - dotnet pack --configuration=Release --version-suffix="beta$TRAVIS_BUILD_ID" ./src/Life/
+ - dotnet test --configuration=Release ./tests/Vitality.Tests/
+ - dotnet pack --configuration=Release --version-suffix="beta$TRAVIS_BUILD_ID" ./src/Vitality/
  - ./push_if_set.sh

@@ -11,11 +11,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Life.Tests
+namespace Vitality.Tests
 {
     public class IntegrationTests
     {
-        protected async Task TestAsync(Action<ILifeBuilder> configure, Func<HttpClient, Task> fn)
+        protected async Task TestAsync(Action<IVitalityBuilder> configure, Func<HttpClient, Task> fn)
         {
             var webHostBuilder = CreateWebHostBuilder(configure);
             using (var server = new TestServer(webHostBuilder))
@@ -25,15 +25,15 @@ namespace Life.Tests
             }
         }
 
-        IWebHostBuilder CreateWebHostBuilder(Action<ILifeBuilder> configure)
+        IWebHostBuilder CreateWebHostBuilder(Action<IVitalityBuilder> configure)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                {
-                   services.AddLife(configure);
+                   services.AddVitality(configure);
                })
                .Configure(app =>
                {
-                   app.UseLife().Run(ctx => ctx.Response.WriteAsync("Hello World"));
+                   app.UseVitality().Run(ctx => ctx.Response.WriteAsync("Hello World"));
                });
     }
 }
