@@ -1,4 +1,6 @@
 # Life.NET
+[![Travis](https://img.shields.io/travis/joncloud/life-net.svg)](https://travis-ci.org/joncloud/life-net/)
+[![NuGet](https://img.shields.io/nuget/v/Life.svg)](https://www.nuget.org/packages/Life/)
 
 ## Description
 Life.NET provides component status evaluation to integrate with monitoring services.
@@ -48,7 +50,7 @@ class Startup {
 Sample output for `/life` results in
 ```json
 {
-  "SqliteDatabase": "Up"
+  "sqliteDatabase": "Up"
 }
 ```
 
