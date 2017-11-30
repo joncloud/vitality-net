@@ -24,6 +24,14 @@ Or update `*.csproj` to include a dependency on
 ```
 
 ## Usage
+Sample authorization for details:
+```csharp
+class Startup {
+  public void ConfigureServices(IServiceCollection services) => 
+    services.AddLife(options => options.AuthorizeDetails = ctx => ctx.User.IsInRole("Admin"));
+}
+```
+
 Sample integration with Sqlite Database:
 ```csharp
 class Startup {

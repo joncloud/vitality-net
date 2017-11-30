@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Life
 {
@@ -12,6 +13,7 @@ namespace Life
         public ComponentStatus(string component, string status)
             : this(component, status, _emptyDetails) { }
 
+        [JsonConstructor]
         public ComponentStatus(string component, string status, IReadOnlyDictionary<string, object> details)
         {
             Component = component;

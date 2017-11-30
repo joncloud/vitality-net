@@ -8,42 +8,28 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Life.Tests
 {
-    public class Class1
+    public class IntegrationTests
     {
-        [Fact]
-        public Task Test1() =>
-            TestAsync(async http =>
-            {
-                var json = await http.GetStringAsync("/life");
-                var statuses = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-                Assert.NotNull(statuses);
-                Assert.NotEmpty(statuses);
-                Assert.Contains("Sqlite", statuses.Keys);
-                Assert.Equal("Up", statuses["Sqlite"]);
-            });
-
-        protected async Task TestAsync(Func<HttpClient, Task> fn)
+        protected async Task TestAsync(Action<ILifeBuilder> configure, Func<HttpClient, Task> fn)
         {
-            var webHostBuilder = CreateWebHostBuilder();
+            var webHostBuilder = CreateWebHostBuilder(configure);
             using (var server = new TestServer(webHostBuilder))
             using (var client = server.CreateClient())
             {
                 await fn(client);
             }
         }
-        
 
-        IWebHostBuilder CreateWebHostBuilder()
+        IWebHostBuilder CreateWebHostBuilder(Action<ILifeBuilder> configure)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                {
-                   services.AddLife(options => options.AddDbConnectionEvaluator("Sqlite", () => new SqliteConnection(), "Data Source=:memory:;"));
+                   services.AddLife(configure);
                })
                .Configure(app =>
                {

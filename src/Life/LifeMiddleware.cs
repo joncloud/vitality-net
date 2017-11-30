@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace Life
 {
@@ -26,20 +27,44 @@ namespace Life
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path.StartsWithSegments(_options.Path))
+            if (context.Request.Path.StartsWithSegments(_options.Path, out var remaining))
             {
-                // TODO add fork for /life/{component} to check for authorization and also report the details
-
-                var statuses = await _statusService.EvaluateComponentsAsync();
-                context.Response.StatusCode = GetStatusCodeFor(statuses.Values);
-
-                string json = JsonConvert.SerializeObject(statuses);
-                await context.Response.WriteAsync(json);
+                Task task = remaining == PathString.Empty
+                    ? WriteAllStatuses(context)
+                    : WriteStatusFor(context, remaining.Value.Substring(1));
+                
+                await task;
             }
             else
             {
                 await _next(context);
             }
+        }
+
+        async Task WriteStatusFor(HttpContext context, string component)
+        {
+            bool authorized = await _options.AuthorizeDetails(context);
+            if (authorized)
+            {
+                var status = await _statusService.EvaluateComponentAsync(component);
+                // TODO remove array
+                context.Response.StatusCode = GetStatusCodeFor(new[] { status.Status });
+                string json = JsonConvert.SerializeObject(status, _options.JsonSettings);
+                await context.Response.WriteAsync(json);
+            }
+            else
+            {
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            }
+        }
+
+        async Task WriteAllStatuses(HttpContext context)
+        {
+            var statuses = await _statusService.EvaluateComponentsAsync();
+            context.Response.StatusCode = GetStatusCodeFor(statuses.Values);
+
+            string json = JsonConvert.SerializeObject(statuses, _options.JsonSettings);
+            await context.Response.WriteAsync(json);
         }
     }
 }
