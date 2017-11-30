@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Lyfe
+namespace Vitality
 {
     interface IStatusService
     {

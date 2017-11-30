@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lyfe.Tests
+namespace Vitality.Tests
 {
     public class ExtensionTests : IntegrationTests
     {
@@ -19,15 +19,15 @@ namespace Lyfe.Tests
         public Task ShouldReportSqliteIsUp() =>
             TestAsync(UseSqlite, http => AssertStatus(http, "sqlite", "Up"));
 
-        static void UseSqlite(ILyfeBuilder options) =>
+        static void UseSqlite(IVitalityBuilder options) =>
             options.AddDbConnectionEvaluator("Sqlite", () => new SqliteConnection(), "Data Source=:memory:;");
 
-        static void UseGoogle(ILyfeBuilder options) =>
+        static void UseGoogle(IVitalityBuilder options) =>
             options.AddHttpEvaluator("Google", "https://www.google.com");
 
         static async Task AssertStatus(HttpClient http, string component, string status)
         {
-            var json = await http.GetStringAsync("/lyfe");
+            var json = await http.GetStringAsync("/vitality");
             var statuses = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             Assert.NotNull(statuses);
             Assert.NotEmpty(statuses);

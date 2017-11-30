@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Life\Lyfe.csproj" />
+    <ProjectReference Include="..\..\src\Life\Vitality.csproj" />
   </ItemGroup>
 
 </Project>

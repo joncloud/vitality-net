@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Lyfe
+namespace Vitality
 {
     public struct ComponentStatus
     {

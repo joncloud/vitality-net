@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Threading.Tasks;
 
-namespace Lyfe
+namespace Vitality
 {
     class DbConnectionEvaluatorOptions<T> where T : DbConnection
     {

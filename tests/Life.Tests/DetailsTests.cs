@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lyfe.Tests
+namespace Vitality.Tests
 {
     public class DetailsTests : IntegrationTests
     {
@@ -15,7 +15,7 @@ namespace Lyfe.Tests
         public Task ShouldReturnComponentDetails() =>
             TestAsync(UseStatusProvider, async http =>
             {
-                var json = await http.GetStringAsync("/lyfe/Status");
+                var json = await http.GetStringAsync("/vitality/Status");
                 var status = JsonConvert.DeserializeObject<ComponentStatus>(json);
 
                 var expected = StatusProvider.Details;
@@ -29,7 +29,7 @@ namespace Lyfe.Tests
         public Task ShouldReturnExceptionContents() =>
             TestAsync(UseExceptionThrower, async http =>
             {
-                var json = await http.GetStringAsync("/lyfe/ExceptionThrower");
+                var json = await http.GetStringAsync("/vitality/ExceptionThrower");
                 var status = JsonConvert.DeserializeObject<ComponentStatus>(json);
 
                 Assert.Contains("exception", status.Details.Keys);
@@ -38,13 +38,13 @@ namespace Lyfe.Tests
                 Assert.Equal("Exception thrown", actual);
             });
 
-        static ILyfeBuilder AuthorizeAll(ILyfeBuilder options)
+        static IVitalityBuilder AuthorizeAll(IVitalityBuilder options)
         {
             options.AuthorizeDetails = _ => Task.FromResult(true);
             return options;
         }
 
-        static void UseStatusProvider(ILyfeBuilder options) =>
+        static void UseStatusProvider(IVitalityBuilder options) =>
             AuthorizeAll(options).AddEvaluator<StatusProvider>().Services.AddSingleton<StatusProvider>();
 
         class StatusProvider : IComponentEvaluator
@@ -65,7 +65,7 @@ namespace Lyfe.Tests
             }
         }
 
-        static void UseExceptionThrower(ILyfeBuilder options) =>
+        static void UseExceptionThrower(IVitalityBuilder options) =>
             AuthorizeAll(options).AddEvaluator<ExceptionThrower>().Services.AddSingleton<ExceptionThrower>();
 
         class ExceptionThrower : IComponentEvaluator

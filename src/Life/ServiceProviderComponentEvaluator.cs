@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Lyfe
+namespace Vitality
 {
     class ServiceProviderComponentEvaluator<T> : IComponentEvaluator
     {

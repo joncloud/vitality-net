@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Lyfe
+namespace Vitality
 {
-    public static class LyfeApplicationBuilderExtensions
+    public static class VitalityApplicationBuilderExtensions
     {
-        public static IApplicationBuilder UseLyfe(this IApplicationBuilder app)
-            => app.UseMiddleware<LyfeMiddleware>();
+        public static IApplicationBuilder UseVitality(this IApplicationBuilder app)
+            => app.UseMiddleware<VitalityMiddleware>();
     }
 }

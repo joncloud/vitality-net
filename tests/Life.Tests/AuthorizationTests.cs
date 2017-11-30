@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lyfe.Tests
+namespace Vitality.Tests
 {
     public class AuthorizationTests : IntegrationTests
     {
@@ -15,7 +15,7 @@ namespace Lyfe.Tests
         public Task ShouldReturnAuthorizedForInvalidCredentials() =>
             TestAsync(UseNothing, async http =>
             {
-                var response = await http.GetAsync("/lyfe/Nothing");
+                var response = await http.GetAsync("/vitality/Nothing");
                 Assert.Equal(StatusCodes.Status401Unauthorized, (int)response.StatusCode);
             });
 
@@ -23,14 +23,14 @@ namespace Lyfe.Tests
         public Task ShouldReturnOKForValidCredentials() =>
             TestAsync(UseNothing, async http =>
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, "/lyfe/Nothing");
+                var request = new HttpRequestMessage(HttpMethod.Get, "/vitality/Nothing");
                 request.Headers.Add("Authorization", Id.ToString());
                 var response = await http.SendAsync(request);
                 Assert.Equal(StatusCodes.Status200OK, (int)response.StatusCode);
             });
 
 
-        static ILyfeBuilder AuthorizeSome(Guid id, ILyfeBuilder options)
+        static IVitalityBuilder AuthorizeSome(Guid id, IVitalityBuilder options)
         {
             options.AuthorizeDetails = async ctx =>
             {
@@ -46,7 +46,7 @@ namespace Lyfe.Tests
         class Nothing { }
         static Task<ComponentStatus> NothingFunc(Nothing _) =>
             Task.FromResult(ComponentStatus.Up("Nothing"));
-        static void UseNothing(ILyfeBuilder options) =>
+        static void UseNothing(IVitalityBuilder options) =>
             AuthorizeSome(Id, options).AddEvaluator<Nothing>("Nothing", NothingFunc).Services.AddSingleton<Nothing>();
     }
 }

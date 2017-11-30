@@ -11,11 +11,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Lyfe.Tests
+namespace Vitality.Tests
 {
     public class IntegrationTests
     {
-        protected async Task TestAsync(Action<ILyfeBuilder> configure, Func<HttpClient, Task> fn)
+        protected async Task TestAsync(Action<IVitalityBuilder> configure, Func<HttpClient, Task> fn)
         {
             var webHostBuilder = CreateWebHostBuilder(configure);
             using (var server = new TestServer(webHostBuilder))
@@ -25,15 +25,15 @@ namespace Lyfe.Tests
             }
         }
 
-        IWebHostBuilder CreateWebHostBuilder(Action<ILyfeBuilder> configure)
+        IWebHostBuilder CreateWebHostBuilder(Action<IVitalityBuilder> configure)
             => new WebHostBuilder()
                .ConfigureServices(services =>
                {
-                   services.AddLyfe(configure);
+                   services.AddVitality(configure);
                })
                .Configure(app =>
                {
-                   app.UseLyfe().Run(ctx => ctx.Response.WriteAsync("Hello World"));
+                   app.UseVitality().Run(ctx => ctx.Response.WriteAsync("Hello World"));
                });
     }
 }

@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Lyfe
+namespace Vitality
 {
-    public static class LyfeServiceCollectionExtensions
+    public static class VitalityServiceCollectionExtensions
     {
-        public static IServiceCollection AddLyfe(this IServiceCollection services, Action<ILyfeBuilder> configure)
+        public static IServiceCollection AddVitality(this IServiceCollection services, Action<IVitalityBuilder> configure)
         {
-            var builder = new LyfeBuilder(services);
+            var builder = new VitalityBuilder(services);
             configure(builder);
-            return services.Configure<LyfeOptions>(builder.Configure)
+            return services.Configure<VitalityOptions>(builder.Configure)
                 .AddMemoryCache()
                 .AddSingleton<IStatusService, StatusService>();
         }

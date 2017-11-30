@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
 
-namespace Lyfe
+namespace Vitality
 {
-    public class LyfeOptions
+    public class VitalityOptions
     {
         public PathString Path { get; set; }
         public int UpStatusCode { get; set; } = StatusCodes.Status200OK;

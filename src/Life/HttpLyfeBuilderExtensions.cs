@@ -1,20 +1,20 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 
-namespace Lyfe
+namespace Vitality
 {
-    public static class HttpLyfeBuilderExtensions
+    public static class HttpVitalityBuilderExtensions
     {
-        public static ILyfeBuilder AddHttpEvaluator(this ILyfeBuilder lyfeBuilder, string component, string uri)
+        public static IVitalityBuilder AddHttpEvaluator(this IVitalityBuilder vitalityBuilder, string component, string uri)
         {
-            lyfeBuilder.Services.TryAddSingleton<HttpEvaluator>();
-            return lyfeBuilder.AddEvaluator<HttpEvaluator>(component, http => http.EvaluateAsync(component, uri));
+            vitalityBuilder.Services.TryAddSingleton<HttpEvaluator>();
+            return vitalityBuilder.AddEvaluator<HttpEvaluator>(component, http => http.EvaluateAsync(component, uri));
         }
 
-        public static ILyfeBuilder AddHttpEvaluator(this ILyfeBuilder lyfeBuilder, string component, string uri, TimeSpan cacheAbsoluteExpiration)
+        public static IVitalityBuilder AddHttpEvaluator(this IVitalityBuilder vitalityBuilder, string component, string uri, TimeSpan cacheAbsoluteExpiration)
         {
-            lyfeBuilder.Services.TryAddSingleton<HttpEvaluator>();
-            return lyfeBuilder.AddEvaluator<HttpEvaluator>(component, cacheAbsoluteExpiration, http => http.EvaluateAsync(component, uri));
+            vitalityBuilder.Services.TryAddSingleton<HttpEvaluator>();
+            return vitalityBuilder.AddEvaluator<HttpEvaluator>(component, cacheAbsoluteExpiration, http => http.EvaluateAsync(component, uri));
         }
     }
 }
