@@ -51,7 +51,7 @@ namespace Vitality
                     {
                         ["ConnectionString"] = connection.ConnectionString,
                         ["CommandText"] = options.CommandText,
-                        ["ConnectionType"] = _factory.GetType()
+                        ["ConnectionType"] = connection.GetType()
                     };
 
                     return reader.HasRows
