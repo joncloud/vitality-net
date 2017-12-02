@@ -1,9 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,8 +10,18 @@ namespace Vitality.Tests
     public class ExtensionTests : IntegrationTests
     {
         [Fact]
-        public Task ShouldReportGoogleIsUp() =>
-            TestAsync(UseGoogle, http => AssertStatus(http, "google", "Up"));
+        public Task ShouldReportGetGoogleIsUp() =>
+            TestAsync(UseGetGoogle, http => AssertStatus(http, "google", "Up"));
+
+        static void UseGetGoogle(IVitalityBuilder options) =>
+            options.AddHttpEvaluator("Google", "https://www.google.com");
+
+        [Fact]
+        public Task ShouldReportHeadGoogleIsUp() =>
+            TestAsync(UseHeadGoogle, http => AssertStatus(http, "google", "Up"));
+
+        static void UseHeadGoogle(IVitalityBuilder options) =>
+            options.AddHttpEvaluator("Google", () => new HttpRequestMessage(HttpMethod.Head, "https://www.google.com"), resp => Task.FromResult(resp.IsSuccessStatusCode));
 
         [Fact]
         public Task ShouldReportSqliteIsUp() =>
@@ -21,9 +29,6 @@ namespace Vitality.Tests
 
         static void UseSqlite(IVitalityBuilder options) =>
             options.AddDbConnectionEvaluator("Sqlite", () => new SqliteConnection(), "Data Source=:memory:;");
-
-        static void UseGoogle(IVitalityBuilder options) =>
-            options.AddHttpEvaluator("Google", "https://www.google.com");
 
         static async Task AssertStatus(HttpClient http, string component, string status)
         {
