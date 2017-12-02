@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>local</VersionSuffix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Vitality\Vitality.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Description>Provides EF Core connection status evaluation to integrate with monitoring services</Description>
+    <Copyright>Copyright (c) 2017 joncloud (jdberube@gmail.com)</Copyright>
+    <AssemblyTitle>Vitality.EntityFrameworkCore</AssemblyTitle>
+    <Authors>joncloud</Authors>
+    <AssemblyName>Vitality.EntityFrameworkCore</AssemblyName>
+    <PackageId>Vitality.EntityFrameworkCore</PackageId>
+    <PackageTags>asp.net core;mvc;life;status;health;check;component;availability;monitor;entityframework</PackageTags>
+    <PackageReleaseNotes>https://github.com/joncloud/vitality-net/releases</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/joncloud/vitality-net/master/nuget.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/joncloud/vitality-net</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/joncloud/vitality-net/master/LICENSE.md</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/joncloud/vitality-net</RepositoryUrl>
+  </PropertyGroup>
+</Project>
