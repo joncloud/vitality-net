@@ -54,6 +54,20 @@ Sample output for `/vitality` results in
 }
 ```
 
+Test results can be cached by using the appropriate overload:
+```csharp
+services.AddVitality(options => options.AddDbConnectionEvaluator("SqliteDatabase", () => new SqliteConnection(), "Data Source=:memory:;"), TimeSpan.FromMinutes(5));
+```
+
+Test an Entity Framework DbContext (include Vitality.EntityFrameworkCore):
+```csharp
+// Simply make sure the database connection is correct.
+services.AddVitality(options => options.AddDbContextEvaluator<ApplicationDbContext>("ApplicationDbContext"));
+
+// Check something on the context for verification.
+services.AddVitality(options => options.AddDbContextEvaluator<ApplicationDbContext>("ApplicationDbContext", ctx => ctx.CriticalTableMustHaveRows.AnyAsync()));
+```
+
 For additional usage see [Tests][].
 
 [Tests]: tests/Vitality.Tests
