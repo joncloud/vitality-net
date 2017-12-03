@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{082772AC-5219-4D53-9633-6288164AACC9}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vitality", "src\Vitality\Vi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vitality.Tests", "tests\Vitality.Tests\Vitality.Tests.csproj", "{C62B50D1-BDDF-4C58-A956-63EA182FE8FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vitality.EntityFrameworkCore", "src\Vitality.EntityFrameworkCore\Vitality.EntityFrameworkCore.csproj", "{A605DB4B-F15D-4532-AD03-91E18064F524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vitality.EntityFrameworkCore", "src\Vitality.EntityFrameworkCore\Vitality.EntityFrameworkCore.csproj", "{A605DB4B-F15D-4532-AD03-91E18064F524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vitality.AzureStorage", "src\Vitality.AzureStorage\Vitality.AzureStorage.csproj", "{411712A9-0B38-4B23-8DB8-E1B15F2E9366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{A605DB4B-F15D-4532-AD03-91E18064F524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A605DB4B-F15D-4532-AD03-91E18064F524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A605DB4B-F15D-4532-AD03-91E18064F524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{411712A9-0B38-4B23-8DB8-E1B15F2E9366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411712A9-0B38-4B23-8DB8-E1B15F2E9366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411712A9-0B38-4B23-8DB8-E1B15F2E9366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411712A9-0B38-4B23-8DB8-E1B15F2E9366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{61EA2EFE-AD72-4436-BF2D-C18058211D60} = {082772AC-5219-4D53-9633-6288164AACC9}
 		{C62B50D1-BDDF-4C58-A956-63EA182FE8FA} = {DE159599-8835-4E56-B67A-634E12EF01A0}
 		{A605DB4B-F15D-4532-AD03-91E18064F524} = {082772AC-5219-4D53-9633-6288164AACC9}
+		{411712A9-0B38-4B23-8DB8-E1B15F2E9366} = {082772AC-5219-4D53-9633-6288164AACC9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6742F0D4-CC66-402A-8D8F-B6642810D339}
