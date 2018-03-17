@@ -2,6 +2,8 @@
 [![Travis](https://img.shields.io/travis/joncloud/vitality-net.svg)](https://travis-ci.org/joncloud/vitality-net/)
 [![NuGet](https://img.shields.io/nuget/v/Vitality.svg)](https://www.nuget.org/packages/Vitality/)
 
+<img src="https://raw.githubusercontent.com/joncloud/vitality-net/master/nuget.png" alt="vitality.net" />
+
 ## Description
 Vitality.NET provides component status evaluation to integrate with monitoring services.
 
