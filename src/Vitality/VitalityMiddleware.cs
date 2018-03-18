@@ -20,6 +20,9 @@ namespace Vitality
             _next = next;
         }
 
+        int GetStatusCodeFor(string status) =>
+            status == "Up" ? _options.UpStatusCode : _options.NotUpStatusCode;
+
         int GetStatusCodeFor(IEnumerable<string> statuses) =>
             statuses.Any(status => status != "Up")
                 ? _options.NotUpStatusCode
@@ -47,8 +50,7 @@ namespace Vitality
             if (authorized)
             {
                 var status = await _statusService.EvaluateComponentAsync(component);
-                // TODO remove array
-                context.Response.StatusCode = GetStatusCodeFor(new[] { status.Status });
+                context.Response.StatusCode = GetStatusCodeFor(status.Status);
                 await WriteJsonAsync(context, status);
             }
             else
