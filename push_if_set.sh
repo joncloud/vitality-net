@@ -18,6 +18,7 @@ if [ -z $NUGET_API_KEY ]; then
   echo "NuGet API Key not set"
 else
   upload_package Vitality
+  upload_package Vitality.AzureServiceBus
   upload_package Vitality.AzureStorage
   upload_package Vitality.EntityFrameworkCore
 fi
