@@ -15,7 +15,9 @@ namespace Vitality.Tests
         public Task ShouldReturnComponentDetails() =>
             TestAsync(UseStatusProvider, async http =>
             {
-                var json = await http.GetStringAsync("/vitality/Status");
+                var response = await http.GetAsync("/vitality/Status");
+                Assert.Equal("application/json", response.Content.Headers.ContentType.MediaType);
+                var json = await response.Content.ReadAsStringAsync();
                 var status = JsonConvert.DeserializeObject<ComponentStatus>(json);
 
                 var expected = StatusProvider.Details;
@@ -29,7 +31,9 @@ namespace Vitality.Tests
         public Task ShouldReturnExceptionContents() =>
             TestAsync(UseExceptionThrower, async http =>
             {
-                var json = await http.GetStringAsync("/vitality/ExceptionThrower");
+                var response = await http.GetAsync("/vitality/ExceptionThrower");
+                Assert.Equal("application/json", response.Content.Headers.ContentType.MediaType);
+                var json = await response.Content.ReadAsStringAsync();
                 var status = JsonConvert.DeserializeObject<ComponentStatus>(json);
 
                 Assert.Contains("exception", status.Details.Keys);

@@ -49,8 +49,7 @@ namespace Vitality
                 var status = await _statusService.EvaluateComponentAsync(component);
                 // TODO remove array
                 context.Response.StatusCode = GetStatusCodeFor(new[] { status.Status });
-                string json = JsonConvert.SerializeObject(status, _options.JsonSettings);
-                await context.Response.WriteAsync(json);
+                await WriteJsonAsync(context, status);
             }
             else
             {
@@ -63,7 +62,13 @@ namespace Vitality
             var statuses = await _statusService.EvaluateComponentsAsync();
             context.Response.StatusCode = GetStatusCodeFor(statuses.Values);
 
-            string json = JsonConvert.SerializeObject(statuses, _options.JsonSettings);
+            await WriteJsonAsync(context, statuses);
+        }
+
+        async Task WriteJsonAsync<T>(HttpContext context, T value)
+        {
+            context.Response.ContentType = "application/json";
+            string json = JsonConvert.SerializeObject(value, _options.JsonSettings);
             await context.Response.WriteAsync(json);
         }
     }

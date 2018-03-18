@@ -32,7 +32,9 @@ namespace Vitality.Tests
 
         static async Task AssertStatus(HttpClient http, string component, string status)
         {
-            var json = await http.GetStringAsync("/vitality");
+            var response = await http.GetAsync("/vitality");
+            Assert.Equal("application/json", response.Content.Headers.ContentType.MediaType);
+            var json = await response.Content.ReadAsStringAsync();
             var statuses = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             Assert.NotNull(statuses);
             Assert.NotEmpty(statuses);
